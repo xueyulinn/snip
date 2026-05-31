@@ -37,3 +37,5 @@ build/
 
 ### envs ###
 application.yaml
+application-prod.yaml
+.env
