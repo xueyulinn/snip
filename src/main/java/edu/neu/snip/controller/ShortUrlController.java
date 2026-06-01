@@ -19,9 +19,13 @@ public class ShortUrlController {
         return ApiResponse.success("success", resp);
     }
 
-    @GetMapping(value = "/api/v1/links")
-    public void getLongUrl(@PathVariable String shortUrl) {
-
+    @GetMapping(value = "/api/v1/links/{shortCode}")
+    public ApiResponse<CreateMappingResponse> getShortUrlInfo(@PathVariable String shortCode) {
+        CreateMappingResponse createMappingResponse = shortUrlService.getShortUrlInfo(shortCode);
+        if (createMappingResponse == null){
+            ApiResponse.fail(404, "short url not found");
+        }
+        return ApiResponse.success("success", createMappingResponse);
     }
 
     @GetMapping(value = "/api/health")

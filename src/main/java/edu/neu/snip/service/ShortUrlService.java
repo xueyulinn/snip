@@ -1,6 +1,7 @@
 package edu.neu.snip.service;
 
 import edu.neu.snip.component.RedisGenerator;
+import edu.neu.snip.dto.ApiResponse;
 import edu.neu.snip.dto.CreateMappingRequest;
 import edu.neu.snip.dto.CreateMappingResponse;
 import edu.neu.snip.model.ShortUrlMapping;
@@ -52,8 +53,19 @@ public class ShortUrlService {
         return resp;
     }
 
-//    public String getLongUrl(String shortUrl){
-//
-//    }
+
+    public CreateMappingResponse getShortUrlInfo(String shortUrl){
+        ShortUrlMapping saved = shortUrlMappingRepository.findByShortCode(shortUrl);
+        if (saved == null){
+            return null;
+        }
+        CreateMappingResponse resp = new CreateMappingResponse();
+        resp.setOriginalUrl(saved.getOriginalUrl());
+        resp.setShortUrl("http://" + saved.getShortCode());
+        resp.setShortCode(saved.getShortCode());
+        resp.setExpireTime(saved.getExpireTime());
+        resp.setCreateTime(saved.getCreateTime());
+        return resp;
+    }
 
 }
