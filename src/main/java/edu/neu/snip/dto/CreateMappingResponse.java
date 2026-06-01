@@ -1,6 +1,8 @@
 package edu.neu.snip.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.NonNull;
 
 import java.time.LocalDateTime;
 
