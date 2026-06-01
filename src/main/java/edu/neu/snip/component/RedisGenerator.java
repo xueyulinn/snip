@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
+/**
+ * Generates globally unique, monotonically increasing IDs backed by a Redis counter.
+ */
 @Component
 @RequiredArgsConstructor
 public class RedisGenerator {

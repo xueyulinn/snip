@@ -13,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+/**
+ * Core service for creating short URL mappings and resolving them back to original URLs.
+ */
 @Service
 @RequiredArgsConstructor
 public class ShortUrlService {
@@ -22,9 +25,15 @@ public class ShortUrlService {
   private final ShortUrlMappingRepository shortUrlMappingRepository;
   private final RedisGenerator redisGenerator;
 
+  /**
+   * Creates and persists a new short URL mapping for the given original URL.
+   *
+   * @param req the request containing the original URL
+   * @return the created mapping details
+   */
   public CreateMappingResponse createShortUrl(CreateMappingRequest req) {
-//       String mapping = cacheService.getFromCache(shortUrl);
-//       if (mapping != null) return true;
+    //       String mapping = cacheService.getFromCache(shortUrl);
+    //       if (mapping != null) return true;
     String originalUrl = req.getOriginalUrl();
     long id = redisGenerator.nextId();
     String shortCode = Base64.encode(id);
@@ -46,12 +55,18 @@ public class ShortUrlService {
     resp.setExpireTime(saved.getExpireTime());
     resp.setCreateTime(saved.getCreateTime());
     // save cache
-//        cacheService.setCache(shortUrl, longUrl);
+    // cacheService.setCache(shortUrl, longUrl);
 
     return resp;
   }
 
 
+  /**
+   * Looks up the mapping for the given short code.
+   *
+   * @param shortUrl the short code to resolve
+   * @return the mapping details, or {@code null} if no mapping exists
+   */
   public CreateMappingResponse getShortUrlInfo(String shortUrl) {
     ShortUrlMapping saved = shortUrlMappingRepository.findByShortCode(shortUrl);
     if (saved == null) {

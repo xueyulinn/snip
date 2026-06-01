@@ -9,6 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+/**
+ * Two-tier cache (in-process Caffeine cache fronting Redis) for short-code lookups.
+ */
 @Service
 @RequiredArgsConstructor
 public class CacheService {

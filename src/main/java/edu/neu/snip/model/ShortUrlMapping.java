@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+/**
+ * JPA entity representing a persisted short-code to original-URL mapping.
+ */
 @Entity
 @Table(name = "short_url_mapping")
 @Data

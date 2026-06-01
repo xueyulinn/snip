@@ -2,6 +2,11 @@ package edu.neu.snip.dto;
 
 import lombok.Data;
 
+/**
+ * Generic envelope for REST API responses, carrying a status code, message, payload and timestamp.
+ *
+ * @param <T> the type of the response payload
+ */
 @Data
 public class ApiResponse<T> {
 
@@ -14,12 +19,25 @@ public class ApiResponse<T> {
     this.timeStamp = System.currentTimeMillis();
   }
 
+  /**
+   * Creates a response with the given code and message and no payload.
+   *
+   * @param code the status code
+   * @param message the response message
+   */
   public ApiResponse(int code, String message) {
     this();
     this.code = code;
     this.message = message;
   }
 
+  /**
+   * Creates a response with the given code, message and payload.
+   *
+   * @param code the status code
+   * @param message the response message
+   * @param data the response payload
+   */
   public ApiResponse(int code, String message, T data) {
     this();
     this.code = code;
