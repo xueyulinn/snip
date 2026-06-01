@@ -6,7 +6,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,7 +16,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class ShortUrlMapping {
 
     /** The short code, e.g. "abc12345"; primary key. */

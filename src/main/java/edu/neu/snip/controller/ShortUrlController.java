@@ -1,6 +1,9 @@
 package edu.neu.snip.controller;
 
 import edu.neu.snip.dto.ApiResponse;
+import edu.neu.snip.dto.CreateMappingRequest;
+import edu.neu.snip.dto.CreateMappingResponse;
+import edu.neu.snip.service.ShortUrlService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +12,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("short_url")
 @RestController
 public class ShortUrlController {
+    private final ShortUrlService shortUrlService;
     @PostMapping(value = "/api/v1/links")
-    public void createShortUrl() {
-
+    public ApiResponse<CreateMappingResponse> createShortUrl(@RequestBody CreateMappingRequest req) {
+        CreateMappingResponse resp = shortUrlService.createShortUrl(req);
+        return ApiResponse.success("success", resp);
     }
 
     @GetMapping(value = "/api/v1/links")
-    public void getShortUrl(@PathVariable String shortUrl){
+    public void getLongUrl(@PathVariable String shortUrl) {
 
     }
 
     @GetMapping(value = "/api/health")
-    public ApiResponse<String> health(){
+    public ApiResponse<String> health() {
         return ApiResponse.success("health", "ok");
     }
 }
