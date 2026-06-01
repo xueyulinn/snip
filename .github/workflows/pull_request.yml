@@ -1,0 +1,28 @@
+name: pull_request.yml
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Checkstyle
+        uses: dbelyaev/action-checkstyle@v3
+
+        with:
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
+          checkstyle_config: google_checks.xml
+          checkstyle_version: "13.5.0"
+          level: 'warning'
+          fail_level: 'warning'
+
+

@@ -6,7 +6,8 @@ import lombok.Data;
 
 @Data
 public class CreateMappingRequest {
-    @NotBlank
-    @Size(max = 2048)
-    String originalUrl;
+
+  @NotBlank
+  @Size(max = 2048)
+  String originalUrl;
 }

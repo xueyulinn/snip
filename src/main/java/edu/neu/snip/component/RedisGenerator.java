@@ -7,13 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class RedisGenerator {
-    private final StringRedisTemplate redisTemplate;
-    private static final String KEY = "snip:id:counter";
+
+  private final StringRedisTemplate redisTemplate;
+  private static final String KEY = "snip:id:counter";
 
 
-    public long nextId(){
-        Long id = redisTemplate.opsForValue().increment(KEY);
-        return id;
-    }
+  public long nextId() {
+    Long id = redisTemplate.opsForValue().increment(KEY);
+    return id;
+  }
 }
 

@@ -1,16 +1,14 @@
 package edu.neu.snip.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
-import lombok.NonNull;
-
 import java.time.LocalDateTime;
+import lombok.Data;
 
 @Data
 public class CreateMappingResponse {
-    private String shortCode;
-    private String shortUrl;
-    private String originalUrl;
-    private LocalDateTime createTime;
-    private LocalDateTime expireTime;
+
+  private String shortCode;
+  private String shortUrl;
+  private String originalUrl;
+  private LocalDateTime createTime;
+  private LocalDateTime expireTime;
 }
